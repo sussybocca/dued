@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vibro Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .profile-card {
+      background: rgba(0,0,0,0.85);
+      padding: 30px;
+      border-radius: 12px;
+      width: 320px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .profile-card img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+    .profile-card h2 {
+      margin: 10px 0 5px;
+    }
+    .profile-card p {
+      margin: 5px 0;
+      color: #ccc;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background: #e53935;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-card">
+    <img id="user-pic" src="" alt="Profile Picture">
+    <h2 id="user-name">Loading...</h2>
+    <p id="user-email"></p>
+    <p id="user-uid"></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } 
+            from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    // 🔥 Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyB6xF5RTX6wy87TT17q61nUzoHI70JBkcA",
+      authDomain: "funfu-b4ad8.firebaseapp.com",
+      projectId: "funfu-b4ad8",
+      storageBucket: "funfu-b4ad8.appspot.com",
+      messagingSenderId: "400767863064",
+      appId: "1:400767863064:web:xxxxxxxx", // fill this from Firebase console
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Check auth state
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        document.getElementById("user-name").textContent = user.displayName || "No name set";
+        document.getElementById("user-email").textContent = user.email;
+        document.getElementById("user-uid").textContent = "UID: " + user.uid;
+        document.getElementById("user-pic").src = user.photoURL || "https://via.placeholder.com/100";
+      } else {
+        window.location.href = "login.html"; // redirect if not logged in
+      }
+    });
+
+    // Logout
+    window.logout = function() {
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    };
+  </script>
+</body>
+</html>
