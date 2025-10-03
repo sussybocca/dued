@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vibro</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    /* Hidden music iframe styling */
+    #music-player {
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      position: absolute;
+      left: -9999px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Vibro</h1>
+
+  <!-- Hidden YouTube iframe acting as background music -->
+  <iframe id="music-player"
+    src="https://www.youtube.com/embed/mO3kyMnuf6c?autoplay=1&loop=1&playlist=mO3kyMnuf6c"
+    allow="autoplay; encrypted-media">
+  </iframe>
+
+  <!-- Your visible video embeds -->
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/WePNs-G7puA" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/W9kH0TlWasI" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/KQmlzT-OfmI?start=1125" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</body>
+</html>
