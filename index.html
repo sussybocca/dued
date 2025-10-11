@@ -1,191 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Vibro Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-    }
-    header {
-      background: #1db954;
-      padding: 15px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .container {
-      padding: 20px;
-      text-align: center;
-    }
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    #music-control {
-      display: inline-block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background: #1db954;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #fff;
-    }
-    #music-control:hover {
-      background: #1aa34a;
-    }
-    .profile-actions {
-      margin-top: 20px;
-    }
-    .profile-actions button {
-      margin: 8px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .profile-btn {
-      background: #333;
-      color: #fff;
-    }
-    .logout-btn {
-      background: #e53935;
-      color: #fff;
-    }
-    .logout-btn:hover {
-      background: #c62828;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Vibro Home - 1980s</title>
 </head>
-<body>
-  <header>🎶 Vibro</header>
+<body bgcolor="black" text="lime" link="cyan" vlink="yellow" alink="red">
+<center>
+<h1><blink>🎶 WELCOME TO VIBRO 🎶</blink></h1>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Under_construction.gif" alt="Under Construction">
 
-  <div class="container">
-    <h2 id="welcome-text">Loading user...</h2>
-    <p id="user-info"></p>
+<table border="1" cellpadding="5" cellspacing="2" bgcolor="purple">
+<tr><td>
+<h2>Loading user info...</h2>
+<p id="user-info">Please wait...</p>
+</td></tr>
 
-    <!-- Hidden Music Player -->
-    <iframe id="music-player"
-      src="https://www.youtube.com/embed/mO3kyMnuf6c?enablejsapi=1&autoplay=0&loop=1&playlist=mO3kyMnuf6c&mute=1"
-      allow="autoplay; encrypted-media"
-      style="display:none;">
-    </iframe>
-    <button id="music-control">▶ Play Music</button>
+<tr><td>
+<b>Music Player:</b><br>
+<iframe id="music-player" width="320" height="180"
+src="https://www.youtube.com/embed/mO3kyMnuf6c?enablejsapi=1&autoplay=0&loop=1&playlist=mO3kyMnuf6c&mute=1"
+frameborder="0"></iframe><br>
+<button id="music-control">▶ Play Music</button>
+</td></tr>
 
-    <!-- Videos -->
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/WePNs-G7puA" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/W9kH0TlWasI" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/KQmlzT-OfmI?start=1125" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+<tr><td>
+<b>Videos:</b><br>
+<iframe width="320" height="180" src="https://www.youtube.com/embed/WePNs-G7puA"></iframe><br>
+<iframe width="320" height="180" src="https://www.youtube.com/embed/W9kH0TlWasI"></iframe><br>
+<iframe width="320" height="180" src="https://www.youtube.com/embed/KQmlzT-OfmI?start=1125"></iframe>
+</td></tr>
 
-    <!-- Profile + Logout -->
-    <div class="profile-actions">
-      <button class="profile-btn" onclick="goProfile()">Profile</button>
-      <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-  </div>
+<tr><td>
+<marquee behavior="scroll" direction="left">Click buttons below to navigate!</marquee><br>
+<button onclick="goProfile()">PROFILE</button>
+<button onclick="logout()">LOGOUT</button>
+</td></tr>
+</table>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
+<p><font color="red">🌟 Totally Retro 1980s Vibes 🌟</font></p>
+</center>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } 
-            from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-    import { getDatabase, ref, get } 
-            from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
-    // 🔥 Firebase Config
-    const firebaseConfig = {
-      apiKey: "AIzaSyB6xF5RTX6wy87TT17q61nUzoHI70JBkcA",
-      authDomain: "funfu-b4ad8.firebaseapp.com",
-      projectId: "funfu-b4ad8",
-      storageBucket: "funfu-b4ad8.appspot.com",
-      messagingSenderId: "400767863064",
-      appId: "1:400767863064:web:xxxxxxxx", // fill this from Firebase console
-      databaseURL: "https://funfu-b4ad8-default-rtdb.firebaseio.com"
-    };
+const firebaseConfig = {
+  apiKey: "AIzaSyB6xF5RTX6wy87TT17q61nUzoHI70JBkcA",
+  authDomain: "funfu-b4ad8.firebaseapp.com",
+  projectId: "funfu-b4ad8",
+  storageBucket: "funfu-b4ad8.appspot.com",
+  messagingSenderId: "400767863064",
+  appId: "1:400767863064:web:xxxxxxxx",
+  databaseURL: "https://funfu-b4ad8-default-rtdb.firebaseio.com"
+};
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getDatabase(app);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
 
-    // 🎵 Music Control
-    let player;
-    let isPlaying = false;
+let player;
+let isPlaying = false;
 
-    // Load YouTube API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.body.appendChild(tag);
 
-    window.onYouTubeIframeAPIReady = () => {
-      player = new YT.Player('music-player');
-    };
+window.onYouTubeIframeAPIReady = () => { player = new YT.Player('music-player'); };
+document.getElementById('music-control').addEventListener('click', () => {
+  if (!isPlaying) { player.playVideo(); player.unMute(); document.getElementById('music-control').innerText="⏸ Pause Music"; }
+  else { player.pauseVideo(); document.getElementById('music-control').innerText="▶ Play Music"; }
+  isPlaying = !isPlaying;
+});
 
-    document.getElementById('music-control').addEventListener('click', () => {
-      if (!isPlaying) {
-        player.playVideo();
-        player.unMute();
-        document.getElementById('music-control').textContent = "⏸ Pause Music";
-      } else {
-        player.pauseVideo();
-        document.getElementById('music-control').textContent = "▶ Play Music";
-      }
-      isPlaying = !isPlaying;
-    });
+onAuthStateChanged(auth, async user => {
+  if (user) {
+    document.getElementById("user-info").innerText = `Hi, ${user.displayName || user.email}!`;
+    const snapshot = await get(ref(db, 'users/' + user.uid));
+    if (snapshot.exists()) { const data = snapshot.val(); document.getElementById("user-info").innerText += ` | Provider: ${data.provider || "email"} | Joined: ${new Date(data.createdAt).toLocaleDateString()}`; }
+  } else { window.location.href="login.html"; }
+});
 
-    // 👤 Auth State
-    onAuthStateChanged(auth, async user => {
-      if (user) {
-        const name = user.displayName || user.email;
-        document.getElementById("welcome-text").textContent = `Hi, ${name}!`;
-
-        // Pull extra info from Realtime Database
-        const snapshot = await get(ref(db, 'users/' + user.uid));
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          document.getElementById("user-info").textContent =
-            `Provider: ${data.provider || "email"} | Joined: ${new Date(data.createdAt).toLocaleDateString()}`;
-        } else {
-          document.getElementById("user-info").textContent = "No extra user data.";
-        }
-      } else {
-        window.location.href = "login.html"; // not logged in
-      }
-    });
-
-    // Profile + Logout
-    window.goProfile = () => window.location.href = "profile.html";
-    window.logout = () => signOut(auth).then(() => window.location.href = "login.html");
-  </script>
+window.goProfile = () => window.location.href="profile.html";
+window.logout = () => signOut(auth).then(()=>window.location.href="login.html");
+</script>
 </body>
 </html>
